@@ -13,6 +13,9 @@ class Question(models.Model):
     def was_published_recent(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    was_published_recent.admin_order_field = 'pub_date'
+    was_published_recent.boolean = True
+    was_published_recent.short_description = 'Published recently?'
     
 
 
